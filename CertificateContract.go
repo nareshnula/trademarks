@@ -26,7 +26,7 @@ func (s *SmartContract) Invoke(stub shim.ChaincodeStubInterface) sc.Response {
 	} else if function == "getAllCertificates" {
 		return s.getAllCertificates(stub, args)
 	} else if function == "queryCertificate" {
-		return s.query(stub, args)
+		return s.queryCertificate(stub, args)
 	} else if function == "deleteCertificate" {
 		return s.deleteCertificate(stub, args)
 	} else if function == "getCertificateHistory" {
@@ -50,7 +50,7 @@ func (s *SmartContract) saveCertificate(stub shim.ChaincodeStubInterface, args [
 	}
 
 	certificateAsBytes, _ := json.Marshal(certificateJSON)
-	stub.PutState(strconv.Itoa(certificateJSON.SerialNumber), certificateAsBytes)
+	stub.PutState(certificateJSON.SerialNumber, certificateAsBytes)
 
 	return shim.Success(certificateAsBytes)
 }
