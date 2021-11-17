@@ -1,4 +1,4 @@
-package tmchain
+package main
 
 import (
 	"bytes"
