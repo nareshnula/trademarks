@@ -75,7 +75,7 @@ func (s *SmartContract) verifyCertificate(stub shim.ChaincodeStubInterface, args
 
 	certificateJSON := Certificate{}
 
-	_ = json.Unmarshal(assetAsBytes, &certificateJSON)
+	_ = json.Unmarshal(certificateAsBytes, &certificateJSON)
 
 	buffer.WriteString("{")
 
@@ -115,7 +115,7 @@ func (s *SmartContract) deleteCertificate(stub shim.ChaincodeStubInterface, args
 	serialNumber := args[0]
 
 	certificateAsBytes, err := stub.GetState(serialNumber)
-	if err != nil || len(assetAsBytes) == 0 {
+	if err != nil || len(certificateAsBytes) == 0 {
 		return shim.Error("The asset " + serialNumber + " does not exist")
 	}
 
