@@ -215,7 +215,7 @@ func (s *SmartContract) getAllCertificates(stub shim.ChaincodeStubInterface, arg
 
 		_ = json.Unmarshal(queryResponse.Value, &certificateJSON)
 
-		response.WriteString(strconv.Itoa(certificateJSON.SerialNumber))
+		response.WriteString(certificateJSON.SerialNumber)
 	} else {
 		response.WriteString("")
 	}
