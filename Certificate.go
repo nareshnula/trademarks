@@ -1,4 +1,4 @@
-package tmchain
+package main
 
 type Certificate struct {
 	SerialNumber       string `json:"serialNumber"`
